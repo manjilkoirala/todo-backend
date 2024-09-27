@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import { todoRouter } from "./routes/todo.routes";
+import { userRouter } from "./routes/user.routers";
 
 const app = express();
 
@@ -23,5 +24,6 @@ app.use(express.static("public"));
 
 // Routes
 app.use("/api/v1/todos", todoRouter);
+app.use("/api/v1/users", userRouter);
 
 export { app };
