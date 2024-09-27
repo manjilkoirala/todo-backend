@@ -17,6 +17,7 @@ app.use(
     limit: "20kb",
   })
 );
+app.use(cookieParser());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
