@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { Todo } from "../models/todo.models";
 import { User } from "../models/user.models";
+import ApiError from "../utils/APIError";
 
 // Get all todos
 export const getAllTodos = async (
@@ -12,7 +13,7 @@ export const getAllTodos = async (
     const todos = await Todo.find({ createdBy: userId });
     res.status(200).json({ message: "Get all todos", todos });
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    throw new ApiError(500, error.message);
   }
 };
 
@@ -39,7 +40,7 @@ export const createTodo = async (
     res.status(201).json({ message: "Todo Created", newTodo });
     console.log(req.body);
   } catch (error) {
-    res.status(500).json({ error: error.message });
+    throw new ApiError(500, error.message);
   }
 };
 

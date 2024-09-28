@@ -8,6 +8,7 @@ interface IUser extends Document {
   email: string;
   password: string;
   refreshToken: string;
+  avatar: string;
   todos: mongoose.Types.ObjectId[]; // Array of Todo IDs
   isPasswordCorrect(password: string): Promise<boolean>;
   generateAccessToken(): string;
@@ -30,6 +31,10 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       minlength: 8,
+    },
+    avatar: {
+      type: String,
+      required: true,
     },
     refreshToken: {
       type: String,
